@@ -1,0 +1,41 @@
+<div *ngIf="usersList == undefined; else resolved">
+  <div class="spinner-border text-info spinner-container" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<ng-template #resolved>
+  <div class="container container-fluid row m-0">
+    <div class="col-md-4 p-0 users">
+      <div class="top-bar">
+        <div class="input-group m-3">
+          <input [(ngModel)]="searchText" #ctrl="ngModel" type="text" class="form-control" name="x"
+            placeholder="Search or start a new chat">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="users__list">
+        <div>
+          <div *ngFor="let user of usersList |filter : 'name':searchText">
+            <div class="users__list__user">
+              <div class="thread" (click)="loadChatWindow(user.id)" [ngClass]="{'active' : activeUser === user.id}">
+                <div class="details">
+                  <div class="user-head online">
+                    <img [src]="user.avtar">
+                  </div>
+                  <div class="user-name">{{user.name}}</div>
+                  <div class="last-message">{{user?.messages[user?.messages?.length - 1]?.content}}</div>
+                </div>
+                <div class="time">{{user?.messages[user?.messages?.length - 1]?.time}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 p-0 full-height bg">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "./variables.scss";
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+
+
+body {
+  background-image: linear-gradient(180deg,#dddbd1,#d2dbdc);
+  width: 100vw;
+  height: 100vh;
+  &:after {
+
+    content: "";
+    height: 127px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    background-color: #009688;
+  }
+}
+.full-height {
+    height: 100%;
+}
+//topbar in both the panels
+.top-bar {
+  background-color: $grey-200;
+  border-bottom: solid 1px rgb(214, 214, 214);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  height: $top-bar-height;
+
+  .buttons svg {
+      height: 25px;
+      fill: $icons;
+  }
+
+  .buttons div {
+      cursor: pointer;
+      &:hover > svg{
+          fill: $grey;
+      }
+  }
+}
+.user-head {
+  grid-area: user-image;
+  margin-right: 20px;
+  width: 49px;
+  height: 49px;
+  img {
+      border-radius: 50%;
+      width: 49px;
+      height: 49px;
+  }
+  &:after {
+      content: '';
+      display: block;
+      position: relative;
+      width: 11px;
+      height: 11px;
+      bottom: 19px;
+      right: -33px;
+      border-radius: 50%;
+      border: solid 3px $grey;
+  }
+  &.online {
+      &:after {
+          background-color: $green;
+      }
+  }
+  &.away {
+      &:after {
+          background-color: $orange;
+      }
+  }
+}
+.spinner-container {
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+}

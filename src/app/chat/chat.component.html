@@ -1,0 +1,38 @@
+<div [ngrxView]="dataState">
+  <div *ngrxViewResolving>
+      <div class="spinner-border text-info spinner-container" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+  </div>
+  <div *ngrxViewResolved class="parent">
+    <div class="messages">
+      <div class="top-bar">
+        <div class="messages__user-info">
+          <div class="user-head">
+            <img [src]='conversation?.avtar'>
+          </div>
+          <div class="name">{{conversation?.name}}</div>
+          <div class="status online"></div>
+        </div>
+      </div>
+      <div class="messages__container" #myScrollContainer>
+        <div *ngFor="let msg of conversation.messages; let i =index">
+          <div class="messages__message" [ngClass]="{'fromme': msg.from === 'me'}">
+
+            <div class="content">{{msg?.content}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <input [(ngModel)]="message" #ctrl="ngModel" type="text" class="msg-input form-control px-3 py-3"
+          placeholder="New Message" />
+        <div class="send-button" (click)="sendMsg()">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngError>
+    <h1>Error</h1>
+  </div>
+  </div>

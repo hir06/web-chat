@@ -1,0 +1,105 @@
+@import '../variables.scss';
+
+.container {
+  background-color: $base;
+  padding: 0 !important;
+  overflow: hidden;
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 5px !important;
+  height: calc(100vh - 10px);
+}
+  .users {
+    &__search {
+    left: 12px;
+    padding-left: 65px;
+    padding-right: 32px;
+    right: 14px;
+      input {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        min-height: 20px;
+        outline: none;
+        width: 100%;
+      }
+    }
+    &__list {
+      height: calc(100vh - #{$top-bar-height});
+      background-color: $white;
+      padding: 0 !important;
+      overflow: auto;
+      &__user {
+        width: 100%;
+        .thread {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            border-bottom: 2px solid $grey-300;
+            &:focus {
+              outline: none;
+            }
+            &.active {
+                background-color: $grey-200 !important;
+            }
+            &:hover {
+                background-color: $grey-300;
+            }
+            .details {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                grid-template-rows: 1fr 1fr;
+                grid-template-areas: "user-image user-name" "user-image last-message";
+                margin: 17px;
+                align-items: center;
+                .user-name, .last-message {
+                    width: 260px;
+                }
+                .user-name {
+                    color: $grey;
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+                .last-message {
+                    color: $text;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+            }
+            .time {
+                background-color: $grey-300;
+                height: 22px;
+                width: 50px;
+                color: $grey;
+                text-align: center;
+                line-height: 22px;
+                font-size: 12px;
+                border-radius: 11px;
+                position: relative;
+                top: 21px;
+                right: 17px;
+            }
+        }
+
+      }
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

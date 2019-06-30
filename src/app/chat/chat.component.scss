@@ -1,0 +1,130 @@
+@import '../../variables.scss';
+
+.messages {
+  height: 100%;
+  background-image: url('../../assets/images/msg-bg.webp');
+  &__container {
+    height: calc(100vh - #{($top-bar-height * 2)});
+    overflow: auto;
+  }
+  &__message{
+    margin: 20px;
+    .user-head:after{
+        display: none;
+    }
+    display: flex;
+    position: relative;
+
+    .content {
+        max-width: 70%;
+        width: fit-content;
+        height: fit-content;
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 0 10px 10px 10px;
+        margin-left: 30px;
+        color: $text;
+    }
+
+    &.fromme {
+        flex-direction: row-reverse;
+
+        .content {
+            border-radius: 10px 0px 10px 10px;
+            margin-left: unset;
+            margin-right: 30px;
+            background-color: #dcf8c6;
+            color:black;
+        }
+    }
+  }
+  &__user-info {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "user-image user-name" "user-image user-status";
+  align-items: center;
+  .user-head {
+      &:after{
+          display: none;
+      }
+  }
+  .name {
+      font-size: 23px;
+      position: relative;
+      top: 6px;
+  }
+  .status {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      top: -3px;
+      &:before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          display: block;
+          border-radius: 50%;
+          background-color: $grey;
+          margin-right: 5px;
+      }
+      &.online:before{
+          background-color: $green;
+      }
+      &.away:before{
+          background-color: $orange;
+      }
+      &.offline:before{
+          background-color: $grey;
+      }
+      &:after {
+          content: 'online';
+      }
+  }
+}
+}
+.top-bar {
+  border-left: 1px solid rgba(0,0,0,.08);
+}
+.bottom-bar {
+  background-color:$grey-200;
+  height: $top-bar-height;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .msg-input {
+      width: calc(100% - 160px);
+      margin: 30px;
+      height: 40px;
+      border-radius: 30px;
+      border: 0px;
+      background-color:$white;
+
+      font-size: 18px;
+      &::placeholder {
+          color: rgb(197, 197, 197);
+      }
+  }
+  .send-button {
+      box-sizing: content-box;
+      width: 21px;
+      height: 23px;
+      background-color: $bright-green;
+      padding: 10px;
+      border-radius: 50%;
+      margin-right: 20px;
+      cursor: pointer;
+      i {
+        color: $base;
+      }
+
+
+
+  }
+}
+
+
+
+
